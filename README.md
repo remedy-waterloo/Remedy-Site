@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Remedy — Company Website
 
-## Getting Started
+Marketing and landing site for **Remedy Health Technologies**, built with [Next.js](https://nextjs.org), TypeScript, and Tailwind CSS.
 
-First, run the development server:
+---
+
+## Prerequisites
+
+Make sure you have the following installed before getting started:
+
+| Tool | Minimum version | Check |
+|------|----------------|-------|
+| [Node.js](https://nodejs.org) | 18.x or higher | `node --version` |
+| npm | 9.x or higher | `npm --version` |
+| Git | any recent version | `git --version` |
+
+> **Tip:** Use [nvm](https://github.com/nvm-sh/nvm) (macOS/Linux) or [nvm-windows](https://github.com/coreybutler/nvm-windows) to manage Node versions easily.
+
+---
+
+## Local Setup
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd Remedy-Site
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser. The page hot-reloads as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start local dev server with hot-reload |
+| `npm run build` | Create an optimised production build |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint across the project |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+├── components/
+│   ├── Navbar.tsx       # Sticky navigation bar
+│   ├── Hero.tsx         # Full-screen hero section
+│   ├── Mission.tsx      # Company mission & values
+│   ├── Product.tsx      # Product features & device mockup
+│   ├── Technology.tsx   # AI & tech stack overview
+│   ├── Team.tsx         # Founders section
+│   ├── Contact.tsx      # Contact form
+│   └── Footer.tsx       # Site footer
+├── globals.css          # Global styles & Tailwind imports
+├── layout.tsx           # Root layout & metadata
+└── page.tsx             # Main page composition
+public/                  # Static assets
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **[Next.js 16](https://nextjs.org)** — React framework (App Router)
+- **[TypeScript](https://www.typescriptlang.org)** — Type safety
+- **[Tailwind CSS v4](https://tailwindcss.com)** — Utility-first styling
+- **[Lucide React](https://lucide.dev)** — Icon library
+
+---
+
+## Making Changes
+
+- **Content / copy** — edit the relevant component in `app/components/`
+- **Colors / branding** — the primary brand color is `emerald-600`; search for it in components to update globally
+- **Metadata** (page title, description, SEO) — edit `app/layout.tsx`
+- **Adding a new section** — create a component in `app/components/`, then import and add it to `app/page.tsx`
+
+---
+
+## Founders
+
+- Alexander Hayhoe
+- Steven Mu
+- Grady Booth
+- Emres Cenk
