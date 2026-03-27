@@ -63,7 +63,7 @@ export default function Hero() {
         <div className="animate-fade-up delay-400 mt-20 grid grid-cols-3 gap-8 max-w-xl mx-auto">
           {[
             { value: "54M+", label: "Americans need daily medication management" },
-            { value: "50%", label: "Of seniors skip or misuse their medication" },
+            { value: "X%", label: "Of seniors skip or misuse their medication" },
             { value: "1", label: "Smart device to solve it all" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
