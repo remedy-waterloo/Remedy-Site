@@ -1,27 +1,27 @@
 const founders = [
   {
     name: "Alexander Hayhoe",
-    role: "Co-Founder",
+    role: "Co-Founder, Founding Software Engineer",
     initials: "AH",
-    color: "from-emerald-400 to-teal-500",
+    color: "from-[#7F11C4] to-[#FF8CB1]",
   },
   {
     name: "Steven Mu",
-    role: "Co-Founder",
+    role: "Co-Founder, CEO",
     initials: "SM",
-    color: "from-teal-400 to-cyan-500",
+    color: "from-[#9B2FD4] to-[#FF8CB1]",
   },
   {
     name: "Grady Booth",
-    role: "Co-Founder",
+    role: "Co-Founder, Founding AI Hardware Engineer",
     initials: "GB",
-    color: "from-emerald-500 to-green-600",
+    color: "from-[#7F11C4] to-[#C460E8]",
   },
   {
-    name: "Emres Cenk",
-    role: "Co-Founder",
+    name: "Emre Cenk",
+    role: "Co-Founder, CTO",
     initials: "EC",
-    color: "from-cyan-400 to-teal-600",
+    color: "from-[#6A0DAD] to-[#FF8CB1]",
   },
 ];
 
@@ -31,7 +31,7 @@ export default function Team() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-emerald-600 text-sm font-semibold uppercase tracking-widest">
+          <span className="text-[#7F11C4] text-sm font-semibold uppercase tracking-widest">
             The Team
           </span>
           <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
@@ -48,7 +48,7 @@ export default function Team() {
           {founders.map((founder) => (
             <div
               key={founder.name}
-              className="group flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-slate-100 hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-50 transition-all duration-300"
+              className="group flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-slate-100 hover:border-[#FF8CB1]/30 hover:shadow-xl hover:shadow-[#FF8CB1]/10 transition-all duration-300"
             >
               {/* Avatar */}
               <div
@@ -60,12 +60,12 @@ export default function Team() {
               <h3 className="mt-5 text-lg font-bold text-slate-900">
                 {founder.name}
               </h3>
-              <p className="mt-1 text-sm text-emerald-600 font-semibold">
+              <p className="mt-1 text-sm text-[#7F11C4] font-semibold">
                 {founder.role}
               </p>
 
               {/* Decorative line */}
-              <div className="mt-4 w-8 h-0.5 bg-emerald-200 rounded-full group-hover:w-14 transition-all duration-300" />
+              <div className="mt-4 w-8 h-0.5 bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] rounded-full group-hover:w-14 transition-all duration-300" />
             </div>
           ))}
         </div>
@@ -76,7 +76,7 @@ export default function Team() {
             We&apos;re building a world-class team.{" "}
             <a
               href="#contact"
-              className="text-emerald-600 font-semibold hover:underline"
+              className="text-[#7F11C4] font-semibold hover:underline"
             >
               Get in touch if you&apos;d like to join us →
             </a>

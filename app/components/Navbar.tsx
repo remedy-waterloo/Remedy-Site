@@ -29,17 +29,8 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
-        <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight text-emerald-600">
-            remedy
-          </span>
-          <span
-            className={`text-xs font-semibold uppercase tracking-widest mt-1 transition-colors ${
-              scrolled ? "text-slate-400" : "text-slate-500"
-            }`}
-          >
-            health tech
-          </span>
+        <a href="#" className="flex items-center">
+          <img src="/rem_logo.png" alt="Remedy" className="h-8 w-auto" />
         </a>
 
         {/* Desktop links */}
@@ -48,14 +39,16 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                scrolled ? "text-slate-600 hover:text-[#7F11C4]" : "text-slate-300 hover:text-white"
+              }`}
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="ml-2 px-5 py-2 rounded-full bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-colors shadow-sm"
+            className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
           >
             Contact Us
           </a>
@@ -63,7 +56,7 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-slate-700 hover:text-emerald-600 transition-colors"
+          className="md:hidden text-slate-700 hover:text-[#7F11C4] transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -80,7 +73,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-slate-600 hover:text-emerald-600 transition-colors py-1"
+                className="text-sm font-medium text-slate-600 hover:text-[#7F11C4] transition-colors py-1"
               >
                 {link.label}
               </a>
@@ -88,7 +81,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-1 px-5 py-2 rounded-full bg-emerald-600 text-white text-sm font-semibold text-center hover:bg-emerald-700 transition-colors"
+              className="mt-1 px-5 py-2 rounded-full bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] text-white text-sm font-semibold text-center hover:opacity-90 transition-opacity"
             >
               Contact Us
             </a>

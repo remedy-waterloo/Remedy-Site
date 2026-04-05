@@ -5,29 +5,25 @@ const technologies = [
     icon: Brain,
     title: "Adaptive AI Engine",
     description:
-      "Our on-device AI learns each patient's routine, flags anomalies, and coordinates with prescribers when dosing schedules need adjusting — without any manual intervention.",
-    color: "emerald",
+      "Our on-device AI hardware learns each patient's routine, flags anomalies, and coordinates with doctors.",
   },
   {
     icon: Zap,
     title: "Real-Time Monitoring",
     description:
       "Continuous sensor arrays track environmental conditions, pill integrity, and dispense confirmation. Every event is timestamped and synced to the cloud within seconds.",
-    color: "teal",
   },
   {
     icon: Lock,
-    title: "Medical-Grade Security",
+    title: "Privacy and Security",
     description:
-      "End-to-end encrypted data pipelines, role-based caregiver access controls, and FDA-aligned device validation ensure your patient data is always protected.",
-    color: "emerald",
+      "End-to-end encrypted data pipelines, role-based caregiver access controls, and FDA-aligned device validation. Face data never leaves the device.",
   },
   {
     icon: BarChart3,
     title: "Caregiver Dashboard",
     description:
-      "A clean, intuitive web and mobile dashboard gives families and healthcare providers visibility into adherence trends, refill timing, and health alerts — in one place.",
-    color: "teal",
+      "A clean, intuitive mobile dashboard gives families and healthcare providers visibility into adherence trends, refill timing, and health alerts — in one place.",
   },
 ];
 
@@ -37,7 +33,7 @@ export default function Technology() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-emerald-600 text-sm font-semibold uppercase tracking-widest">
+          <span className="text-[#7F11C4] text-sm font-semibold uppercase tracking-widest">
             Technology
           </span>
           <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
@@ -56,12 +52,12 @@ export default function Technology() {
             return (
               <div
                 key={tech.title}
-                className="relative p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-50 transition-all duration-300 group overflow-hidden"
+                className="relative p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#FF8CB1]/30 hover:shadow-lg hover:shadow-[#FF8CB1]/10 transition-all duration-300 group overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full -mr-10 -mt-10 group-hover:bg-emerald-100 transition-colors" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#7F11C4]/5 rounded-full -mr-10 -mt-10 group-hover:bg-[#7F11C4]/10 transition-colors" />
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-5">
-                    <Icon size={22} className="text-emerald-700" />
+                  <div className="w-12 h-12 rounded-xl bg-[#7F11C4]/10 flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-[#7F11C4]" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">
                     {tech.title}
@@ -89,7 +85,7 @@ export default function Technology() {
             {["AI/ML", "IoT", "Cloud", "Mobile"].map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-sm font-semibold border border-emerald-500/20"
+                className="px-4 py-1.5 rounded-full bg-[#7F11C4]/10 text-[#FF8CB1] text-sm font-semibold border border-[#7F11C4]/20"
               >
                 {tag}
               </span>
