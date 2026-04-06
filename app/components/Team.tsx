@@ -35,7 +35,7 @@ export default function Team() {
             The Team
           </span>
           <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
-            Meet the founders
+            Meet The Founders
           </h2>
           <p className="mt-5 text-lg text-slate-500">
             A multidisciplinary team united by a shared belief: that better

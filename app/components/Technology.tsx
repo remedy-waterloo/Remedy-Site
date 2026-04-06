@@ -5,25 +5,25 @@ const technologies = [
     icon: Brain,
     title: "Adaptive AI Engine",
     description:
-      "Our on-device AI hardware learns each patient's routine, flags anomalies, and coordinates with doctors.",
+      "Our on-device AI hardware learns each patient's routine and flags anomalies to send to doctors and caretakers.",
   },
   {
     icon: Zap,
     title: "Real-Time Monitoring",
     description:
-      "Continuous sensor arrays track environmental conditions, pill integrity, and dispense confirmation. Every event is timestamped and synced to the cloud within seconds.",
+      "Every dispense is confirmed and synced to the caretaker within seconds with our app. Nothing goes unlogged.",
   },
   {
     icon: Lock,
     title: "Privacy and Security",
     description:
-      "End-to-end encrypted data pipelines, role-based caregiver access controls, and FDA-aligned device validation. Face data never leaves the device.",
+      "All face data is processed in hardware with our own on-device AI inference chip, which means your data never leaves the Remedy Dispenser.",
   },
   {
     icon: BarChart3,
     title: "Caregiver Dashboard",
     description:
-      "A clean, intuitive mobile dashboard gives families and healthcare providers visibility into adherence trends, refill timing, and health alerts — in one place.",
+      "A mobile app that shows families and providers everything they need to know, all in one place",
   },
 ];
 
