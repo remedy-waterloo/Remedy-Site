@@ -20,7 +20,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center pt-24 pb-16 lg:pt-0 lg:pb-0">
         {/* Badge */}
         <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7F11C4]/10 border border-[#7F11C4]/20 text-[#FF8CB1] text-sm font-medium mb-8">
           <Sparkles size={14} />
