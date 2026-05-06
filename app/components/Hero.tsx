@@ -60,7 +60,7 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="animate-fade-up delay-400 mt-20 grid grid-cols-4 gap-8 max-w-2xl mx-auto">
+        <div className="animate-fade-up delay-400 mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-2xl mx-auto">
           {[
             { value: "45.8%", label: "of Americans take a prescription medication" },
             { value: "16.1M", label: "were CAUGHT abusing prescription drugs in USA in 2025" },

@@ -12,7 +12,7 @@ export default function Contact() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left side */}
           <div>
             <span className="text-[#FF8CB1] text-sm font-semibold uppercase tracking-widest">
@@ -55,7 +55,7 @@ export default function Contact() {
           </div>
 
           {/* Right side — contact form */}
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-5 sm:p-8 backdrop-blur-sm">
             <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>

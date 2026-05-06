@@ -81,7 +81,7 @@ export default function Technology() {
               Designed to FDA 21 CFR Part 11 standards · 99.9% uptime SLA · SOC 2 Type II
             </div>
           </div>
-          <div className="flex gap-4 shrink-0">
+          <div className="flex flex-wrap gap-3 shrink-0">
             {["AI/ML", "IoT", "Cloud", "Mobile"].map((tag) => (
               <span
                 key={tag}

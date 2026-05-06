@@ -13,7 +13,7 @@ export default function Product() {
   return (
     <section id="product" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text side */}
           <div>
             <span className="text-[#7F11C4] text-sm font-semibold uppercase tracking-widest">
@@ -51,7 +51,7 @@ export default function Product() {
           </div>
 
           {/* Visual side — abstract device mockup */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center px-12 sm:px-8 lg:px-0 mt-8 lg:mt-0">
             <div className="relative w-72 h-[480px] rounded-3xl bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 shadow-2xl shadow-slate-900/60 flex flex-col items-center justify-between py-7 px-7 border border-white/10 overflow-hidden">
 
               {/* Subtle side edge highlight */}
