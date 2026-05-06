@@ -52,7 +52,7 @@ export default function Product() {
 
           {/* Visual side — abstract device mockup */}
           <div className="relative flex items-center justify-center px-12 sm:px-8 lg:px-0 mt-8 lg:mt-0">
-            <div className="relative w-72 h-[480px] rounded-3xl bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 shadow-2xl shadow-slate-900/60 flex flex-col items-center justify-between py-7 px-7 border border-white/10 overflow-hidden">
+            <div className="relative w-60 h-[400px] sm:w-72 sm:h-[480px] rounded-3xl bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 shadow-2xl shadow-slate-900/60 flex flex-col items-center justify-between py-7 px-7 border border-white/10 overflow-hidden">
 
               {/* Subtle side edge highlight */}
               <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-white/10 via-white/5 to-transparent" />
@@ -141,13 +141,13 @@ export default function Product() {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 border border-slate-100">
+            <div className="absolute -top-4 right-0 sm:-right-4 bg-white rounded-2xl shadow-xl p-4 border border-slate-100">
               <div className="text-xs text-slate-500 font-medium">Adherence rate</div>
               <div className="text-2xl font-extrabold text-[#7F11C4]">98.4%</div>
             </div>
 
             {/* Floating alert */}
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 border border-slate-100 max-w-[160px]">
+            <div className="absolute -bottom-4 left-0 sm:-left-4 bg-white rounded-2xl shadow-xl p-4 border border-slate-100 max-w-[160px]">
               <div className="flex items-center gap-1.5 mb-1">
                 <div className="w-2 h-2 rounded-full bg-[#FF8CB1]" />
                 <span className="text-xs font-semibold text-slate-700">Dose taken</span>
