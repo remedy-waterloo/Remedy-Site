@@ -35,12 +35,8 @@ export default function Team() {
             The Team
           </span>
           <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
-            Meet The Founders
+            About Us
           </h2>
-          <p className="mt-5 text-lg text-slate-500">
-            A multidisciplinary team united by a shared belief: that better
-            technology can fundamentally improve the lives of aging populations.
-          </p>
         </div>
 
         {/* Founders grid */}

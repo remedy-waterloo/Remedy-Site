@@ -21,11 +21,6 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center pt-24 pb-36 lg:pt-0 lg:pb-0">
-        {/* Badge */}
-        <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7F11C4]/10 border border-[#7F11C4]/20 text-[#FF8CB1] text-sm font-medium mb-8">
-          <Sparkles size={14} />
-          AI-Powered Medication Management
-        </div>
 
         {/* Headline */}
         <h1 className="animate-fade-up delay-100 text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight">

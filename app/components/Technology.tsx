@@ -70,28 +70,6 @@ export default function Technology() {
             );
           })}
         </div>
-
-        {/* Tech stack bar */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="text-white font-bold text-lg">
-              Engineered for reliability
-            </div>
-            <div className="text-slate-400 text-sm mt-1">
-              Designed to FDA 21 CFR Part 11 standards · 99.9% uptime SLA · SOC 2 Type II
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3 shrink-0">
-            {["AI/ML", "IoT", "Cloud", "Mobile"].map((tag) => (
-              <span
-                key={tag}
-                className="px-4 py-1.5 rounded-full bg-[#7F11C4]/10 text-[#FF8CB1] text-sm font-semibold border border-[#7F11C4]/20"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

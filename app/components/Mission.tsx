@@ -18,7 +18,7 @@ export default function Mission() {
             missed doses, and dangerous mix-ups.
           </p>
           <p className="mt-5 text-lg text-slate-500 leading-relaxed">
-            <strong>Also, we care.</strong> Medication misuse and mismanagement is so preventable, yet it has claimed so many lives.
+            Also,<strong> we care.</strong> Medication misuse and mismanagement is so preventable, yet it has claimed so many lives.
           </p>
         </div>
 
