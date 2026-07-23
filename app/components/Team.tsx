@@ -1,82 +1,114 @@
+import { ArrowRight } from "lucide-react";
+
+function LinkedinIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+    </svg>
+  );
+}
+
 const founders = [
-  {
-    name: "Alexander Hayhoe",
-    role: "Co-Founder, Founding Software Engineer",
-    initials: "AH",
-    color: "from-[#7F11C4] to-[#FF8CB1]",
-  },
   {
     name: "Steven Mu",
     role: "Co-Founder, CEO",
     initials: "SM",
-    color: "from-[#9B2FD4] to-[#FF8CB1]",
+    linkedin: "https://www.linkedin.com/in/stevenmu12/",
   },
   {
     name: "Grady Booth",
-    role: "Co-Founder, Founding AI Hardware Engineer",
+    role: "CTO, AI Hardware",
     initials: "GB",
-    color: "from-[#7F11C4] to-[#C460E8]",
+    linkedin: "https://www.linkedin.com/in/grady-booth-42b466290/",
   },
   {
     name: "Emre Cenk",
-    role: "Co-Founder, CTO",
+    role: "Co-Founder, Founding Engineer",
     initials: "EC",
-    color: "from-[#6A0DAD] to-[#FF8CB1]",
+    linkedin: "https://www.linkedin.com/in/emrecenk/",
+  },
+  {
+    name: "Alexander Hayhoe",
+    role: "Founding Engineer",
+    initials: "AH",
+    linkedin: "https://www.linkedin.com/in/alexander-hayhoe/",
   },
 ];
 
 export default function Team() {
   return (
-    <section id="team" className="py-24 bg-slate-50">
+    <section id="team" className="pt-16 pb-24 bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-[#7F11C4] text-sm font-semibold uppercase tracking-widest">
-            The Team
-          </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+        <div className="max-w-3xl mx-auto text-center mb-14">
+          <span className="text-[#FF8CB1] text-sm font-semibold uppercase tracking-widest">
             About Us
+          </span>
+          <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+            Our Story &amp; Our Team
           </h2>
+          <p className="mt-6 text-lg text-slate-300 leading-relaxed">
+            Remedy started in our garage in 2021. We watched our own
+            grandparents struggle with confusing pill schedules and missed
+            doses, so we built the machine we wish they would&apos;ve had.
+          </p>
         </div>
 
         {/* Founders grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {founders.map((founder) => (
             <div
               key={founder.name}
-              className="group flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-slate-100 hover:border-[#FF8CB1]/30 hover:shadow-xl hover:shadow-[#FF8CB1]/10 transition-all duration-300"
+              className="group flex flex-col items-center text-center p-4 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
             >
               {/* Avatar */}
-              <div
-                className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${founder.color} flex items-center justify-center text-white text-xl font-bold shadow-md group-hover:scale-105 transition-transform duration-300`}
-              >
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-white text-base sm:text-xl font-bold transition-colors duration-300 group-hover:bg-white/15">
                 {founder.initials}
               </div>
 
-              <h3 className="mt-5 text-lg font-bold text-slate-900">
+              <h3 className="mt-4 sm:mt-5 text-sm sm:text-lg font-bold text-white">
                 {founder.name}
               </h3>
-              <p className="mt-1 text-sm text-[#7F11C4] font-semibold">
+              <p className="mt-1 text-xs sm:text-sm text-[#FF8CB1] font-semibold">
                 {founder.role}
               </p>
+              <a
+                href={founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+              >
+                <LinkedinIcon size={14} />
+                LinkedIn
+              </a>
 
               {/* Decorative line */}
-              <div className="mt-4 w-8 h-0.5 bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] rounded-full group-hover:w-14 transition-all duration-300" />
+              <div className="mt-4 w-8 h-0.5 bg-[#FF8CB1] rounded-full group-hover:w-14 transition-all duration-300" />
             </div>
           ))}
         </div>
 
         {/* Join us callout */}
         <div className="mt-16 text-center">
-          <p className="text-slate-500 text-sm">
-            We&apos;re building a world-class team.{" "}
-            <a
-              href="#contact"
-              className="text-[#7F11C4] font-semibold hover:underline"
-            >
-              Get in touch if you&apos;d like to join us →
-            </a>
+          <p className="text-slate-400 text-sm">
+            We&apos;re building a world-class team.
           </p>
+          <a
+            href="#contact"
+            className="group mt-2 inline-flex items-center gap-1.5 text-[#FF8CB1] font-semibold text-sm"
+          >
+            Get in touch if you&apos;d like to join us
+            <ArrowRight
+              size={16}
+              className="transition-transform group-hover:translate-x-1"
+            />
+          </a>
         </div>
       </div>
     </section>

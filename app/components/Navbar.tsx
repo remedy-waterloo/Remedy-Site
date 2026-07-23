@@ -40,7 +40,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm font-medium transition-colors ${
-                scrolled ? "text-slate-600 hover:text-[#7F11C4]" : "text-slate-300 hover:text-white"
+                scrolled ? "text-slate-600 hover:text-slate-900" : "text-slate-300 hover:text-white"
               }`}
             >
               {link.label}
@@ -48,7 +48,11 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+            className={`ml-2 px-5 py-2 rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 ${
+              scrolled
+                ? "bg-slate-900 text-white hover:bg-slate-800"
+                : "bg-white text-black hover:bg-slate-200"
+            }`}
           >
             Contact Us
           </a>
@@ -56,7 +60,7 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
-          className={`md:hidden transition-colors ${scrolled ? "text-slate-700 hover:text-[#7F11C4]" : "text-white hover:text-[#FF8CB1]"}`}
+          className={`md:hidden transition-colors ${scrolled ? "text-slate-700 hover:text-slate-900" : "text-white hover:text-slate-300"}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -73,7 +77,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-slate-600 hover:text-[#7F11C4] transition-colors py-1"
+                className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors py-1"
               >
                 {link.label}
               </a>
@@ -81,7 +85,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-1 px-5 py-2 rounded-full bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] text-white text-sm font-semibold text-center hover:opacity-90 transition-opacity"
+              className="mt-1 px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium text-center hover:bg-slate-800 transition-colors"
             >
               Contact Us
             </a>
