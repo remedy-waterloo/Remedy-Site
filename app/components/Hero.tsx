@@ -21,10 +21,10 @@ export default function Hero() {
             See the Product <ArrowRight size={16} />
           </a>
           <a
-            href="#mission"
+            href="#team"
             className="group inline-flex items-center justify-center gap-1.5 px-6 py-3 text-white/70 hover:text-white font-medium text-sm transition-colors"
           >
-            Our Mission
+            Our Story
             <ArrowRight
               size={16}
               className="transition-transform group-hover:translate-x-1"

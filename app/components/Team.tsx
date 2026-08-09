@@ -17,7 +17,7 @@ function LinkedinIcon({ size = 14 }: { size?: number }) {
 const founders = [
   {
     name: "Steven Mu",
-    role: "Co-Founder, CEO",
+    role: "CEO, Firmware",
     initials: "SM",
     linkedin: "https://www.linkedin.com/in/stevenmu12/",
   },
@@ -26,12 +26,6 @@ const founders = [
     role: "CTO, AI Hardware",
     initials: "GB",
     linkedin: "https://www.linkedin.com/in/grady-booth-42b466290/",
-  },
-  {
-    name: "Emre Cenk",
-    role: "Co-Founder, Founding Engineer",
-    initials: "EC",
-    linkedin: "https://www.linkedin.com/in/emrecenk/",
   },
   {
     name: "Alexander Hayhoe",
@@ -61,11 +55,11 @@ export default function Team() {
         </div>
 
         {/* Founders grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
           {founders.map((founder) => (
             <div
               key={founder.name}
-              className="group flex flex-col items-center text-center p-4 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+              className="group flex flex-col items-center text-center w-[calc(50%-0.375rem)] sm:w-56 lg:w-60 p-4 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
             >
               {/* Avatar */}
               <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-white text-base sm:text-xl font-bold transition-colors duration-300 group-hover:bg-white/15">
