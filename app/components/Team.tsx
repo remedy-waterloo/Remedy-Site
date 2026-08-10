@@ -19,12 +19,14 @@ const founders = [
     name: "Steven Mu",
     role: "CEO, Firmware",
     initials: "SM",
+    image: "/steven.jpg",
     linkedin: "https://www.linkedin.com/in/stevenmu12/",
   },
   {
     name: "Grady Booth",
     role: "CTO, AI Hardware",
     initials: "GB",
+    image: "/grady.jpeg",
     linkedin: "https://www.linkedin.com/in/grady-booth-42b466290/",
   },
   {
@@ -62,8 +64,16 @@ export default function Team() {
               className="group flex flex-col items-center text-center w-[calc(50%-0.375rem)] sm:w-56 lg:w-60 p-4 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
             >
               {/* Avatar */}
-              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-white text-base sm:text-xl font-bold transition-colors duration-300 group-hover:bg-white/15">
-                {founder.initials}
+              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-white text-base sm:text-xl font-bold overflow-hidden transition-colors duration-300 group-hover:bg-white/15">
+                {founder.image ? (
+                  <img
+                    src={founder.image}
+                    alt={founder.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  founder.initials
+                )}
               </div>
 
               <h3 className="mt-4 sm:mt-5 text-sm sm:text-lg font-bold text-white">
