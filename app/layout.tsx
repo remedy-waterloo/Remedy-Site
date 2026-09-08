@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Remedy — AI-Powered Medication Management",
+  title: "Remedy",
   description:
     "Remedy is a health tech company designing next-generation AI pill dispensers for elderly patients. Safe, smart, and connected medication management.",
   keywords: [

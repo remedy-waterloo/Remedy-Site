@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center pt-36 lg:pt-44">
         {/* Headline */}
         <h1 className="animate-fade-up delay-100 text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
-          Making medication safer with{" "}
+          Making Medication Safer & Transparent with{" "}
           <span className="bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] bg-clip-text text-transparent">
             Remedy
           </span>
@@ -18,10 +18,10 @@ export default function Hero() {
             href="#product"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-medium text-sm hover:bg-slate-200 hover:-translate-y-0.5 transition-all"
           >
-            See the Product <ArrowRight size={16} />
+            Pilot Product <ArrowRight size={16} />
           </a>
           <a
-            href="#team"
+            href="#story"
             className="group inline-flex items-center justify-center gap-1.5 px-6 py-3 text-white/70 hover:text-white font-medium text-sm transition-colors"
           >
             Our Story

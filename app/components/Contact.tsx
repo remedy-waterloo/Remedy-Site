@@ -14,9 +14,10 @@ export default function Contact() {
           Ready to make a difference?
         </h2>
         <p className="mt-5 text-lg text-slate-400 leading-relaxed">
-          Whether you&apos;re a healthcare provider, a caregiver, or an
-          investor who believes in what we&apos;re building, we&apos;d love
-          to hear from you.
+          Whether you&apos;re a healthcare professional, a caregiver, an
+          investor who believes in what we&apos;re building, or a talented
+          engineer who would like to contribute to our mission of medication
+          safety for all, we&apos;d love to hear from you.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">

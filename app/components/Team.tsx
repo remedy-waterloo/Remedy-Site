@@ -35,6 +35,12 @@ const founders = [
     initials: "AH",
     linkedin: "https://www.linkedin.com/in/alexander-hayhoe/",
   },
+  {
+    name: "Emre Cenk",
+    role: "Founding Engineer",
+    initials: "EC",
+    linkedin: "https://www.linkedin.com/in/emrecenk/",
+  },
 ];
 
 export default function Team() {
@@ -44,16 +50,11 @@ export default function Team() {
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-14">
           <span className="text-[#FF8CB1] text-sm font-semibold uppercase tracking-widest">
-            About Us
+            The Team
           </span>
           <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Our Story &amp; Our Team
+            Behind Remedy
           </h2>
-          <p className="mt-6 text-lg text-slate-300 leading-relaxed">
-            Remedy started in our garage in 2021. We watched our own
-            grandparents struggle with confusing pill schedules and missed
-            doses, so we built the machine we wish they would&apos;ve had.
-          </p>
         </div>
 
         {/* Founders grid */}
