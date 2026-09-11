@@ -6,7 +6,7 @@ import { ImageIcon, MousePointerClick } from "lucide-react";
 const photos = [
   { caption: "Humble Beginnings", image: "/humble_beginnings_1.jpeg" },
   { caption: "The First Remedy", image: "/original.jpg" },
-  { caption: "Grandma", image: "" },
+  { caption: "Grandma", image: "/grandma.JPG" },
 ];
 
 const stackStyles = [
