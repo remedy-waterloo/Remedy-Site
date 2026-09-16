@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { normalizeEmail } from "./dynamo";
 import { verifySession } from "./session";
+import { loginUrl } from "./urls";
 import { getUserById, toPublicUser, type PublicUser } from "./users";
 
 /**
@@ -23,7 +24,9 @@ export const getCurrentUser = cache(async (): Promise<PublicUser | null> => {
 
 export async function requireUser(): Promise<PublicUser> {
   const user = await getCurrentUser();
-  if (!user) redirect("/login");
+  // LOGIN_URL lets the dashboard deployment send expired sessions back to the
+  // marketing site, which is where the login form actually lives.
+  if (!user) redirect(loginUrl());
   return user;
 }
 

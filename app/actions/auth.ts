@@ -6,6 +6,7 @@ import { normalizeEmail } from "@/app/lib/dynamo";
 import { getInvite, redeemInvite } from "@/app/lib/invites";
 import { hashPassword, verifyPassword } from "@/app/lib/password";
 import { createSession, deleteSession } from "@/app/lib/session";
+import { dashboardUrl } from "@/app/lib/urls";
 import { createUser, getUserByEmail } from "@/app/lib/users";
 import {
   validateEmail,
@@ -18,10 +19,6 @@ export type AuthFormState = {
   fieldErrors?: { name?: string; email?: string; password?: string };
   values?: { name?: string; email?: string };
 };
-
-function dashboardUrl(): string {
-  return process.env.DASHBOARD_URL ?? "https://dash.myremedy.app";
-}
 
 export async function signup(
   _prevState: AuthFormState,
