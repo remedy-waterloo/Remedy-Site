@@ -5,11 +5,15 @@ import Story from "./components/Story";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { getCurrentUser } from "./lib/dal";
 
-export default function Home() {
+export default async function Home() {
+  // Reading the session cookie opts this page into dynamic rendering.
+  const user = await getCurrentUser();
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} />
       <main>
         <Hero />
         <Product />

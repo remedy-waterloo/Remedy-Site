@@ -3,13 +3,18 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
+import type { PublicUser } from "@/app/lib/users";
+
 const navLinks = [
   { label: "Product", href: "#product" },
   { label: "Story", href: "#story" },
   { label: "Team", href: "#team" },
 ];
 
-export default function Navbar() {
+const DASHBOARD_URL =
+  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "https://dash.myremedy.app";
+
+export default function Navbar({ user }: { user: PublicUser | null }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -18,6 +23,21 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Only the given name, so a long full name doesn't blow out the navbar.
+  const firstName = user?.name.trim().split(/\s+/)[0] ?? "";
+
+  const primaryButton = `px-5 py-2 rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 ${
+    scrolled
+      ? "bg-slate-900 text-white hover:bg-slate-800"
+      : "bg-white text-black hover:bg-slate-200"
+  }`;
+
+  const ghostLink = `text-sm font-medium transition-colors ${
+    scrolled
+      ? "text-slate-600 hover:text-slate-900"
+      : "text-slate-300 hover:text-white"
+  }`;
 
   return (
     <nav
@@ -35,31 +55,43 @@ export default function Navbar() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors ${
-                scrolled ? "text-slate-600 hover:text-slate-900" : "text-slate-300 hover:text-white"
-              }`}
-            >
+            <a key={link.href} href={link.href} className={ghostLink}>
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className={`ml-2 px-5 py-2 rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 ${
-              scrolled
-                ? "bg-slate-900 text-white hover:bg-slate-800"
-                : "bg-white text-black hover:bg-slate-200"
-            }`}
-          >
-            Contact Us
-          </a>
+
+          {user ? (
+            <div className="flex items-center gap-4">
+              <span
+                className={`text-sm ${
+                  scrolled ? "text-slate-600" : "text-slate-300"
+                }`}
+              >
+                Welcome back, <span className="font-semibold">{firstName}</span>
+              </span>
+              <a href={DASHBOARD_URL} className={primaryButton}>
+                Dashboard
+              </a>
+            </div>
+          ) : (
+            <div className="flex items-center gap-4">
+              <a href="/login" className={ghostLink}>
+                Log in
+              </a>
+              <a href="/signup" className={primaryButton}>
+                Sign up
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Mobile menu button */}
         <button
-          className={`md:hidden transition-colors ${scrolled ? "text-slate-700 hover:text-slate-900" : "text-white hover:text-slate-300"}`}
+          className={`md:hidden transition-colors ${
+            scrolled
+              ? "text-slate-700 hover:text-slate-900"
+              : "text-white hover:text-slate-300"
+          }`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -81,13 +113,39 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-              className="mt-1 px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium text-center hover:bg-slate-800 transition-colors"
-            >
-              Contact Us
-            </a>
+
+            {user ? (
+              <>
+                <p className="text-sm text-slate-600 py-1">
+                  Welcome back,{" "}
+                  <span className="font-semibold">{firstName}</span>
+                </p>
+                <a
+                  href={DASHBOARD_URL}
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-1 px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium text-center hover:bg-slate-800 transition-colors"
+                >
+                  Dashboard
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href="/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors py-1"
+                >
+                  Log in
+                </a>
+                <a
+                  href="/signup"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-1 px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium text-center hover:bg-slate-800 transition-colors"
+                >
+                  Sign up
+                </a>
+              </>
+            )}
           </div>
         </div>
       )}
