@@ -2,10 +2,12 @@ import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
 const features = [
-  "Automated dosage control, no pill sorting required",
-  "Infrared Biometric verification before dispense",
+  "Right Dose, Right Time, Every Time",
   "Live & Cumulative Adherence Reports for caregivers & professionals",
-  "Tamper-proof security mechanism"
+  "Infrared Biometric Verification Prior To Dispense",
+  "Tamper-proof Security Mechanism",
+  "To-Go Containers That Only Unlock At Correct Times",
+  "Scalable to support up to 10 users"
 ];
 
 export default function Product() {
@@ -22,7 +24,7 @@ export default function Product() {
               Remedy Zero
             </h2>
             <p className="mt-5 text-lg text-slate-400 leading-relaxed">
-              Countertop kiosk device. Simply input prescription pods and set up
+              Countertop kiosk device. Simply input prescription blisters and set up
               corresponding user profiles - and Remedy takes care of everything else!
             </p>
 
