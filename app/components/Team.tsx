@@ -17,29 +17,17 @@ function LinkedinIcon({ size = 14 }: { size?: number }) {
 const founders = [
   {
     name: "Steven Mu",
-    role: "CEO, Firmware",
+    role: "Founder & CEO",
     initials: "SM",
     image: "/steven.jpg",
     linkedin: "https://www.linkedin.com/in/stevenmu12/",
   },
   {
     name: "Grady Booth",
-    role: "CTO, AI Hardware",
+    role: "Founder & CTO",
     initials: "GB",
     image: "/grady.jpeg",
     linkedin: "https://www.linkedin.com/in/grady-booth-42b466290/",
-  },
-  {
-    name: "Alexander Hayhoe",
-    role: "Founding Engineer",
-    initials: "AH",
-    linkedin: "https://www.linkedin.com/in/alexander-hayhoe/",
-  },
-  {
-    name: "Emre Cenk",
-    role: "Founding Engineer",
-    initials: "EC",
-    linkedin: "https://www.linkedin.com/in/emrecenk/",
   },
 ];
 
