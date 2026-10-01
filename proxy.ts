@@ -22,7 +22,14 @@ import { loginUrl } from "@/app/lib/urls";
 const PROTECTED_ROUTES = ["/admin", "/dashboard"];
 
 export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, hostname } = request.nextUrl;
+
+  // dash.myremedy.app is this same deployment, so its root would otherwise
+  // serve the marketing page. Send it to the dashboard, which then runs
+  // through the auth check below on the follow-up request.
+  if (hostname.startsWith("dash.") && pathname === "/") {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 
   const isProtectedRoute = PROTECTED_ROUTES.some((route) =>
     pathname.startsWith(route)
