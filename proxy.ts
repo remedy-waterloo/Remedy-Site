@@ -19,7 +19,7 @@ import { loginUrl } from "@/app/lib/urls";
  * way out until the cookie expired. That decision now lives in the login and
  * signup pages, which can consult the database.
  */
-const PROTECTED_ROUTES = ["/admin"];
+const PROTECTED_ROUTES = ["/admin", "/dashboard"];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
