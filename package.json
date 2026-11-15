@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "setup-dynamo": "node --env-file-if-exists=.env.local scripts/setup-dynamo.mjs",
-    "invite": "node --env-file-if-exists=.env.local scripts/invite.mjs"
+    "invite": "node --env-file-if-exists=.env.local scripts/invite.mjs",
+    "delete-user": "node --env-file-if-exists=.env.local scripts/delete-user.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.1133.0",

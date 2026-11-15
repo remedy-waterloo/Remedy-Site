@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
@@ -29,6 +29,24 @@ export default function Navbar({ user }: { user: PublicUser | null }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Keyboard: focus moves into the menu when it opens, and Escape closes it
+  // and hands focus back to the toggle.
+  useEffect(() => {
+    if (!menuOpen) return;
+    menuRef.current?.querySelector<HTMLElement>("a")?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setMenuOpen(false);
+      toggleRef.current?.focus();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   const closeMenu = () => setMenuOpen(false);
   const solid = scrolled || menuOpen;
 
@@ -42,7 +60,7 @@ export default function Navbar({ user }: { user: PublicUser | null }) {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
         <a href="#" className="flex items-center">
-          <Image src={logo} alt="Remedy" className="h-8 w-auto" preload />
+          <Image src={logo} alt="Remedy, back to top" className="h-8 w-auto" preload />
         </a>
 
         {/* Desktop */}
@@ -74,6 +92,7 @@ export default function Navbar({ user }: { user: PublicUser | null }) {
         </div>
 
         <button
+          ref={toggleRef}
           className="-mr-2 p-2 text-ink-soft transition-colors hover:text-ink md:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -87,6 +106,7 @@ export default function Navbar({ user }: { user: PublicUser | null }) {
       {/* Mobile — always mounted so it can animate open and closed. */}
       <div
         id="mobile-menu"
+        ref={menuRef}
         inert={!menuOpen}
         className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out md:hidden ${
           menuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"

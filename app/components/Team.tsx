@@ -66,6 +66,7 @@ export default function Team() {
                 href={founder.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${founder.name} on LinkedIn (opens in a new tab)`}
                 className="mt-4 inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-ink"
               >
                 <LinkedinIcon />

@@ -26,15 +26,20 @@ export default function RetirementHomes() {
         </div>
 
         {/* Real dashboard screenshot. The bottom fades because the page keeps going. */}
-        <div className="mt-14 overflow-hidden rounded-card border border-line">
-          <Image
-            src={dashboard}
-            alt="The Remedy dashboard for a retirement home: doses dispensed today, adherence by dose window, a 7-day adherence chart, alerts and device status."
-            sizes="(min-width: 1280px) 1216px, calc(100vw - 48px)"
-            className="h-auto w-full [mask-image:linear-gradient(to_bottom,black_88%,transparent)]"
-            placeholder="blur"
-          />
-        </div>
+        <figure className="mt-14">
+          <div className="overflow-hidden rounded-card border border-line">
+            <Image
+              src={dashboard}
+              alt="The Remedy dashboard for a sample retirement home, showing doses dispensed today, adherence by dose window, a 7-day adherence chart, alerts and device status"
+              sizes="(min-width: 1280px) 1216px, calc(100vw - 48px)"
+              className="h-auto w-full [mask-image:linear-gradient(to_bottom,black_88%,transparent)]"
+              placeholder="blur"
+            />
+          </div>
+          <figcaption className="mt-3 text-sm text-ink-muted">
+            The Remedy dashboard, shown with sample data
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

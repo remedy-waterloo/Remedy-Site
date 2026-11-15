@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 
 import { signup, type AuthFormState } from "@/app/actions/auth";
 import {
@@ -55,6 +56,17 @@ export default function SignupForm() {
       <SubmitButton pending={pending} pendingLabel="Creating account…">
         Create account
       </SubmitButton>
+
+      <p className="text-center text-xs leading-relaxed text-ink-muted">
+        By creating an account, you agree to our{" "}
+        <Link href="/terms" className="text-ink-soft underline underline-offset-2 hover:text-ink">
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link href="/privacy" className="text-ink-soft underline underline-offset-2 hover:text-ink">
+          Privacy Policy
+        </Link>
+      </p>
     </form>
   );
 }

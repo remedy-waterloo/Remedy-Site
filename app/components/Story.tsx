@@ -4,10 +4,22 @@ import earlyDays from "@/public/humble_beginnings_1.jpeg";
 import firstRemedy from "@/public/original.jpg";
 import grandma from "@/public/grandma.jpg";
 
-const photos: { caption: string; image: StaticImageData }[] = [
-  { caption: "Grandma", image: grandma },
-  { caption: "Early days", image: earlyDays },
-  { caption: "The first Remedy", image: firstRemedy },
+const photos: { caption: string; alt: string; image: StaticImageData }[] = [
+  {
+    caption: "Grandma",
+    alt: "Steven's grandmother smiling with family",
+    image: grandma,
+  },
+  {
+    caption: "Early days",
+    alt: "Three people holding an early cardboard prototype of Remedy",
+    image: earlyDays,
+  },
+  {
+    caption: "The first Remedy",
+    alt: "The first Remedy prototype, a handmade box with a small lit display",
+    image: firstRemedy,
+  },
 ];
 
 export default function Story() {
@@ -53,7 +65,7 @@ export default function Story() {
                 >
                   <Image
                     src={photo.image}
-                    alt={photo.caption}
+                    alt={photo.alt}
                     fill
                     sizes={
                       i === 0

@@ -8,7 +8,7 @@ const features = [
     body: "An infrared scan confirms the patient's identity before any medication is dispensed",
   },
   {
-    title: "Tamper-proof",
+    title: "Tamper-resistant",
     body: "Medication stays secured inside the device until it is scheduled to be taken",
   },
   {
@@ -52,12 +52,12 @@ export default function Product() {
           </div>
           <div>
             <h3 className="text-subheading text-ink">
-              Right dose, right time, every time
+              Right dose, right time
             </h3>
             <p className="text-lead mt-5 text-ink-soft">
-              Each dose is released only when it is due, preventing missed and
-              doubled doses and taking the guesswork out of daily medication
-              routines
+              Each dose is released only when it is due, helping prevent missed
+              and doubled doses and taking the guesswork out of daily
+              medication routines
             </p>
           </div>
         </div>
@@ -72,6 +72,11 @@ export default function Product() {
             </li>
           ))}
         </ul>
+
+        <p className="mt-16 text-sm text-ink-muted">
+          Remedy Zero is currently in pilot, and features may change before
+          general release
+        </p>
       </div>
     </section>
   );

@@ -72,7 +72,7 @@ export function Field({
         placeholder={placeholder}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${name}-error` : undefined}
-        className={`h-11 w-full rounded-control border bg-surface px-4 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-accent focus-visible:outline-none disabled:opacity-60 ${
+        className={`h-11 w-full rounded-control border bg-surface px-4 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted focus:border-accent focus-visible:outline-none disabled:opacity-60 ${
           error ? "border-danger/60" : "border-line"
         }`}
       />

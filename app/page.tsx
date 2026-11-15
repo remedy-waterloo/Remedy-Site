@@ -6,6 +6,7 @@ import Story from "./components/Story";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import SkipLink from "./components/SkipLink";
 import { getCurrentUser } from "./lib/dal";
 
 export default async function Home() {
@@ -14,8 +15,9 @@ export default async function Home() {
 
   return (
     <>
+      <SkipLink />
       <Navbar user={user} />
-      <main>
+      <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         <Product />
         <RetirementHomes />
