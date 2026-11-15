@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 import type { PublicUser } from "@/app/lib/users";
+import Logo from "@/app/components/Logo";
 import { buttonClass } from "@/app/components/ui/button";
-import logo from "@/public/rem_logo.png";
 
 const navLinks = [
   { label: "Product", href: "#product" },
@@ -59,8 +58,8 @@ export default function Navbar({ user }: { user: PublicUser | null }) {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <a href="#" className="flex items-center">
-          <Image src={logo} alt="Remedy, back to top" className="h-8 w-auto" preload />
+        <a href="#" aria-label="Remedy, back to top">
+          <Logo preload />
         </a>
 
         {/* Desktop */}

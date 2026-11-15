@@ -41,48 +41,51 @@ const founders: {
 
 export default function Team() {
   return (
-    <section id="team" className="py-24 sm:py-32">
+    <section id="team" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h2 className="text-heading text-center text-ink">Behind Remedy</h2>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+          <h2 className="text-heading text-ink lg:col-span-4">Behind Remedy</h2>
 
-        <ul className="mt-14 flex flex-wrap justify-center gap-4 sm:gap-6">
-          {founders.map((founder) => (
-            <li
-              key={founder.name}
-              className="flex w-[calc(50%-0.5rem)] flex-col items-center rounded-card border border-line bg-surface p-6 text-center sm:w-60 sm:p-8"
-            >
-              <Image
-                src={founder.image}
-                alt=""
-                sizes="80px"
-                className="size-16 rounded-full object-cover sm:size-20"
-                placeholder="blur"
-              />
-              <h3 className="mt-5 font-semibold text-ink sm:text-lg">
-                {founder.name}
-              </h3>
-              <p className="mt-1 text-sm text-ink-muted">{founder.role}</p>
-              <a
-                href={founder.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${founder.name} on LinkedIn (opens in a new tab)`}
-                className="mt-4 inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-ink"
-              >
-                <LinkedinIcon />
-                LinkedIn
+          <div className="lg:col-span-7 lg:col-start-6">
+            <ul className="border-t border-line">
+              {founders.map((founder) => (
+                <li
+                  key={founder.name}
+                  className="flex items-center gap-5 border-b border-line py-6"
+                >
+                  <Image
+                    src={founder.image}
+                    alt=""
+                    sizes="64px"
+                    className="size-14 shrink-0 rounded-full object-cover sm:size-16"
+                    placeholder="blur"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-lg font-medium text-ink">{founder.name}</h3>
+                    <p className="mt-0.5 text-sm text-ink-muted">{founder.role}</p>
+                  </div>
+                  <a
+                    href={founder.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${founder.name} on LinkedIn (opens in a new tab)`}
+                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:border-line-strong hover:text-ink"
+                  >
+                    <LinkedinIcon />
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-8 text-sm text-ink-muted">
+              Interested in joining us?{" "}
+              <a href="#contact" className={arrowLink}>
+                Get in touch
+                <ArrowRight size={16} className={linkArrow} />
               </a>
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-14 text-center text-sm text-ink-muted">
-          Interested in joining us?{" "}
-          <a href="#contact" className={arrowLink}>
-            Get in touch
-            <ArrowRight size={16} className={linkArrow} />
-          </a>
-        </p>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

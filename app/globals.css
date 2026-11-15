@@ -11,6 +11,7 @@
  */
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), ui-serif, Georgia, serif;
 
   --color-canvas: #000000;
   --color-surface: rgb(255 255 255 / 0.04);
@@ -28,7 +29,8 @@
 
   --color-danger: #f87171;
 
-  /* Outer containers use card; anything nested inside uses control. */
+  /* panel > card > control, largest to most nested. */
+  --radius-panel: 1.5rem;
   --radius-card: 1rem;
   --radius-control: 0.5rem;
 
@@ -46,26 +48,33 @@
   }
 }
 
-/* Type scale. clamp() keeps sizes fluid without breakpoint jumps. */
+/*
+ * Type scale. Headings use the serif display face; clamp() keeps sizes fluid
+ * without breakpoint jumps. Instrument Serif has one weight, so hierarchy
+ * comes from size alone.
+ */
 @utility text-display {
-  font-size: clamp(2.75rem, 1.9rem + 4vw, 4.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 1.6rem + 6.4vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-weight: 400;
 }
 
 @utility text-heading {
-  font-size: clamp(2rem, 1.6rem + 1.8vw, 3rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.8rem + 2.8vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-weight: 400;
 }
 
 @utility text-subheading {
-  font-size: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 
 @utility text-lead {

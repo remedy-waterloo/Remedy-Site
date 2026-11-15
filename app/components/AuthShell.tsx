@@ -25,7 +25,7 @@ export function AuthShell({
         </Link>
 
         <div className="mt-8 rounded-card border border-line bg-surface p-8">
-          <h1 className="text-2xl font-bold tracking-tight text-ink">{title}</h1>
+          <h1 className="font-display text-4xl leading-tight text-ink">{title}</h1>
           <p className="mt-2 text-sm leading-relaxed text-ink-muted">{subtitle}</p>
 
           <div className="mt-8">{children}</div>

@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import Footer from "@/app/components/Footer";
+import Logo from "@/app/components/Logo";
 import SkipLink from "@/app/components/SkipLink";
-import logo from "@/public/rem_logo.png";
 
 export default function LegalPage({
   title,
@@ -19,8 +18,8 @@ export default function LegalPage({
       <SkipLink />
       <header className="border-b border-line">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-          <Link href="/" className="flex items-center">
-            <Image src={logo} alt="Remedy home" className="h-8 w-auto" />
+          <Link href="/" aria-label="Remedy home">
+            <Logo />
           </Link>
           <Link
             href="/"

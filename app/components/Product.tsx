@@ -2,6 +2,12 @@ import Image from "next/image";
 
 import countertop from "@/public/nice.png";
 
+const steps = [
+  "Load your prescriptions or blisters",
+  "Create a profile for each person",
+  "Remedy Zero manages the schedule",
+];
+
 const features = [
   {
     title: "Biometric verification",
@@ -26,35 +32,52 @@ const features = [
 ];
 
 export default function Product() {
-  // Less top padding: the hero's fading device image already supplies the gap.
   return (
-    <section id="product" className="pb-24 pt-12 sm:pb-32 sm:pt-16">
+    <section id="product" className="py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-2xl">
-          <h2 className="text-heading text-ink">Remedy Zero</h2>
-          <p className="text-lead mt-5 text-ink-soft">
-            A countertop dispenser for the medications your household already
-            takes. Load your prescription blister packs, create a profile for
-            each person, and Remedy Zero manages the schedule.
-          </p>
+        {/* Intro + setup */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <h2 className="text-heading text-ink">Remedy Zero</h2>
+            <p className="text-lead mt-6 max-w-md text-ink-soft">
+              A countertop dispenser for the medications your household already
+              takes
+            </p>
+          </div>
+
+          <ol className="border-t border-line lg:col-span-6 lg:col-start-7">
+            {steps.map((step, i) => (
+              <li
+                key={step}
+                className="flex items-baseline gap-6 border-b border-line py-6 sm:gap-10 sm:py-8"
+              >
+                <span className="w-6 shrink-0 text-sm tabular-nums text-ink-muted">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-xl text-ink sm:text-2xl">{step}</span>
+              </li>
+            ))}
+          </ol>
         </div>
 
-        {/* The main feature gets the room. */}
-        <div className="mt-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="overflow-hidden rounded-card border border-line bg-surface">
-            <Image
-              src={countertop}
-              alt="Remedy Zero on a kitchen counter"
-              sizes="(min-width: 1024px) 600px, calc(100vw - 48px)"
-              className="h-auto w-full"
-              placeholder="blur"
-            />
+        {/* The main feature */}
+        <div className="mt-20 grid items-center gap-12 sm:mt-28 lg:grid-cols-2 lg:gap-16">
+          <div className="lg:order-2">
+            <div className="overflow-hidden rounded-panel bg-surface">
+              <Image
+                src={countertop}
+                alt="Remedy Zero on a kitchen counter beside a glass of water"
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 50vw, calc(100vw - 48px)"
+                className="h-auto w-full"
+                placeholder="blur"
+              />
+            </div>
           </div>
-          <div>
-            <h3 className="text-subheading text-ink">
+          <div className="lg:order-1">
+            <h3 className="text-subheading max-w-md text-ink">
               Right dose, right time
             </h3>
-            <p className="text-lead mt-5 text-ink-soft">
+            <p className="text-lead mt-6 max-w-md text-ink-soft">
               Each dose is released only when it is due, helping prevent missed
               and doubled doses and taking the guesswork out of daily
               medication routines
@@ -62,18 +85,24 @@ export default function Product() {
           </div>
         </div>
 
-        <ul className="mt-20 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Spec list */}
+        <dl className="mt-20 border-t border-line sm:mt-28">
           {features.map((feature) => (
-            <li key={feature.title}>
-              <h4 className="font-semibold text-ink">{feature.title}</h4>
-              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+            <div
+              key={feature.title}
+              className="grid gap-2 border-b border-line py-6 sm:grid-cols-12 sm:gap-8 sm:py-8"
+            >
+              <dt className="font-medium text-ink sm:col-span-5 lg:col-span-4">
+                {feature.title}
+              </dt>
+              <dd className="text-ink-muted sm:col-span-7 lg:col-span-6 lg:col-start-7">
                 {feature.body}
-              </p>
-            </li>
+              </dd>
+            </div>
           ))}
-        </ul>
+        </dl>
 
-        <p className="mt-16 text-sm text-ink-muted">
+        <p className="mt-6 text-sm text-ink-muted">
           Remedy Zero is currently in pilot, and features may change before
           general release
         </p>

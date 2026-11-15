@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+// Display face for headings only. Body text stays Inter to match the dashboard.
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     // The font variable sits on <html> so the @theme --font-sans token can
     // resolve it at :root.
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );
