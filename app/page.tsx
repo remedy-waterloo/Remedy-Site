@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Product from "./components/Product";
+import RetirementHomes from "./components/RetirementHomes";
 import Story from "./components/Story";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
@@ -17,6 +18,7 @@ export default async function Home() {
       <main>
         <Hero />
         <Product />
+        <RetirementHomes />
         <Story />
         <Team />
         <Contact />

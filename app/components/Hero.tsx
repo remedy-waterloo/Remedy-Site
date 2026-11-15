@@ -1,53 +1,51 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+
+import { arrowLink, buttonClass, linkArrow } from "@/app/components/ui/button";
+import { EARLY_ACCESS_HREF } from "@/app/lib/contact";
+import device from "@/public/new_remedy.png";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center overflow-hidden bg-black">
-      <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center pt-36 lg:pt-44">
-        {/* Headline */}
-        <h1 className="animate-fade-up delay-100 text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
-          Making Medication Safer & Transparent with{" "}
-          <span className="bg-gradient-to-r from-[#7F11C4] to-[#FF8CB1] bg-clip-text text-transparent">
-            Remedy
-          </span>
+    <section className="relative overflow-hidden">
+      <div className="mx-auto max-w-3xl px-6 pt-36 text-center lg:px-8 lg:pt-44">
+        <h1 className="text-display text-ink">
+          Right pill, right person, right time
         </h1>
+        <p className="text-lead mx-auto mt-6 max-w-2xl text-ink-soft">
+          Remedy Zero is a countertop pill dispenser that verifies the patient
+          before every dose and keeps your family informed of what was taken
+        </p>
 
-        {/* CTA buttons */}
-        <div className="animate-fade-up delay-300 mt-14 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="#product"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-medium text-sm hover:bg-slate-200 hover:-translate-y-0.5 transition-all"
-          >
-            Pilot Product <ArrowRight size={16} />
+        <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+          <a href={EARLY_ACCESS_HREF} className={buttonClass("primary", "lg")}>
+            Request early access
           </a>
-          <a
-            href="#story"
-            className="group inline-flex items-center justify-center gap-1.5 px-6 py-3 text-white/70 hover:text-white font-medium text-sm transition-colors"
-          >
-            Our Story
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1"
-            />
+          <a href="#story" className={`group ${buttonClass("ghost", "lg")}`}>
+            Our story
+            <ArrowRight size={16} className={linkArrow} />
           </a>
         </div>
+
+        <p className="mt-8 text-sm text-ink-muted">
+          Managing a retirement home?{" "}
+          <a href="#retirement-homes" className={arrowLink}>
+            See Remedy for care facilities
+            <ArrowRight size={16} className={linkArrow} />
+          </a>
+        </p>
       </div>
 
-      {/* Device — cropped to the top section, dissolving into the black background */}
-      <div className="animate-fade-in delay-400 relative z-10 w-full max-w-4xl mx-auto mt-20 lg:mt-24 px-6">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
-        <div
-          className="relative w-full aspect-[1254/860] overflow-hidden"
-          style={{
-            maskImage: "linear-gradient(to bottom, black 50%, transparent 92%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, black 50%, transparent 92%)",
-          }}
-        >
-          <img
-            src="/new_remedy.png"
-            alt="Remedy device"
-            className="absolute top-0 left-0 w-full h-auto select-none pointer-events-none"
+      {/* The render is square; crop to the top and fade it into the page. */}
+      <div className="mx-auto mt-16 w-full max-w-4xl px-6 lg:mt-20">
+        <div className="relative aspect-[1254/860] w-full overflow-hidden [mask-image:linear-gradient(to_bottom,black_50%,transparent_92%)]">
+          <Image
+            src={device}
+            alt="Remedy Zero dispenser"
+            sizes="(min-width: 896px) 848px, calc(100vw - 48px)"
+            className="absolute inset-x-0 top-0 h-auto w-full select-none"
+            placeholder="blur"
+            preload
           />
         </div>
       </div>

@@ -1,41 +1,38 @@
-"use client";
-
-import { Mail, MapPin } from "lucide-react";
+import { buttonClass } from "@/app/components/ui/button";
+import {
+  CONTACT_EMAIL,
+  EARLY_ACCESS_HREF,
+  RETIREMENT_HOME_HREF,
+} from "@/app/lib/contact";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-black border-t border-white/10">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-        {/* Header */}
-        <span className="text-[#FF8CB1] text-sm font-semibold uppercase tracking-widest">
-          Get in Touch
-        </span>
-        <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-          Ready to make a difference?
-        </h2>
-        <p className="mt-5 text-lg text-slate-400 leading-relaxed">
-          Whether you&apos;re a healthcare professional, a caregiver, an
-          investor who believes in what we&apos;re building, or a talented
-          engineer who would like to contribute to our mission of medication
-          safety for all, we&apos;d love to hear from you.
+    <section id="contact" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-2xl px-6 text-center lg:px-8">
+        <h2 className="text-heading text-ink">Pilot Remedy Zero with us</h2>
+        <p className="text-lead mt-5 text-ink-soft">
+          We&apos;re now placing our first devices with families and retirement
+          homes. Tell us who you&apos;re caring for and we&apos;ll be in touch.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-              <Mail size={18} className="text-[#FF8CB1]" />
-            </div>
-            <div className="text-left">
-              <div className="text-white font-semibold text-sm">Email us</div>
-              <a
-                href="mailto:smu@myremedy.app"
-                className="text-slate-400 text-sm hover:text-white transition-colors"
-              >
-                smu@myremedy.app
-              </a>
-            </div>
-          </div>
+        <div className="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+          <a href={EARLY_ACCESS_HREF} className={buttonClass("primary", "lg")}>
+            Request early access
+          </a>
+          <a href={RETIREMENT_HOME_HREF} className={buttonClass("ghost", "lg")}>
+            I run a retirement home
+          </a>
         </div>
+
+        <p className="mt-12 text-sm text-ink-muted">
+          Clinicians, investors and engineers can reach us at{" "}
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="font-medium text-accent transition-colors hover:text-accent-hover"
+          >
+            {CONTACT_EMAIL}
+          </a>
+        </p>
       </div>
     </section>
   );

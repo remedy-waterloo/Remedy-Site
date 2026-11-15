@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { LoaderCircle } from "lucide-react";
+
+import { buttonClass } from "@/app/components/ui/button";
 
 export function AuthShell({
   title,
@@ -12,31 +15,31 @@ export function AuthShell({
   footer: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen bg-black flex flex-col items-center justify-center px-6 py-20">
+    <main className="flex min-h-screen flex-col items-center justify-center px-6 py-20">
       <div className="w-full max-w-md">
         <Link
           href="/"
-          className="block text-center text-sm text-slate-500 hover:text-white transition-colors"
+          className="block text-center text-sm text-ink-muted transition-colors hover:text-ink"
         >
-          ← Back to remedy
+          ← Back to Remedy
         </Link>
 
-        <div className="mt-8 rounded-2xl bg-white/5 border border-white/10 p-8">
-          <h1 className="text-2xl font-bold text-white tracking-tight">
-            {title}
-          </h1>
-          <p className="mt-2 text-sm text-slate-400 leading-relaxed">
-            {subtitle}
-          </p>
+        <div className="mt-8 rounded-card border border-line bg-surface p-8">
+          <h1 className="text-2xl font-bold tracking-tight text-ink">{title}</h1>
+          <p className="mt-2 text-sm leading-relaxed text-ink-muted">{subtitle}</p>
 
           <div className="mt-8">{children}</div>
         </div>
 
-        <div className="mt-6 text-center text-sm text-slate-400">{footer}</div>
+        <div className="mt-6 text-center text-sm text-ink-muted">{footer}</div>
       </div>
     </main>
   );
 }
+
+/** Accent-coloured link used in the "Don't have an account?" footers. */
+export const authFooterLink =
+  "font-medium text-accent transition-colors hover:text-accent-hover";
 
 export function Field({
   label,
@@ -57,10 +60,7 @@ export function Field({
 }) {
   return (
     <div>
-      <label
-        htmlFor={name}
-        className="block text-xs uppercase tracking-widest text-slate-500 mb-2"
-      >
+      <label htmlFor={name} className="mb-2 block text-sm font-medium text-ink-soft">
         {label}
       </label>
       <input
@@ -72,12 +72,12 @@ export function Field({
         placeholder={placeholder}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${name}-error` : undefined}
-        className={`w-full rounded-lg bg-white/5 border px-4 py-3 text-sm text-white placeholder:text-slate-600 outline-none transition-colors focus:border-[#FF8CB1] ${
-          error ? "border-red-500/50" : "border-white/10"
+        className={`h-11 w-full rounded-control border bg-surface px-4 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-accent focus-visible:outline-none disabled:opacity-60 ${
+          error ? "border-danger/60" : "border-line"
         }`}
       />
       {error && (
-        <p id={`${name}-error`} className="mt-2 text-xs text-red-400">
+        <p id={`${name}-error`} className="mt-2 animate-fade-in text-sm text-danger">
           {error}
         </p>
       )}
@@ -87,11 +87,11 @@ export function Field({
 
 export function RememberMe() {
   return (
-    <label className="flex items-center gap-2 text-sm text-slate-400 cursor-pointer">
+    <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-soft">
       <input
         type="checkbox"
         name="rememberMe"
-        className="h-4 w-4 rounded border-white/20 bg-white/5 accent-[#FF8CB1]"
+        className="size-4 rounded border-line-strong bg-surface accent-accent"
       />
       Keep me signed in
     </label>
@@ -100,18 +100,29 @@ export function RememberMe() {
 
 export function SubmitButton({
   pending,
+  pendingLabel,
   children,
 }: {
   pending: boolean;
+  /** Says what's happening, e.g. "Logging in…". */
+  pendingLabel: string;
   children: React.ReactNode;
 }) {
   return (
     <button
       type="submit"
       disabled={pending}
-      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white text-black font-medium text-sm transition-all hover:bg-slate-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+      aria-busy={pending}
+      className={buttonClass("primary", "lg", "w-full")}
     >
-      {pending ? "Just a moment…" : children}
+      {pending ? (
+        <>
+          <LoaderCircle size={16} className="animate-spin" aria-hidden />
+          {pendingLabel}
+        </>
+      ) : (
+        children
+      )}
     </button>
   );
 }
@@ -120,7 +131,7 @@ export function FormError({ message }: { message: string }) {
   return (
     <div
       role="alert"
-      className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300"
+      className="animate-fade-in rounded-control border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-red-200"
     >
       {message}
     </div>

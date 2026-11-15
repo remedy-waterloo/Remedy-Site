@@ -3,20 +3,20 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Remedy",
   description:
-    "Remedy is a health tech company designing next-generation AI pill dispensers for elderly patients. Safe, smart, and connected medication management.",
+    "Remedy Zero is a countertop pill dispenser that verifies the patient before every dose and gives families, caregivers and retirement homes a live record of medication adherence",
   keywords: [
     "pill dispenser",
     "medication management",
     "elderly care",
-    "health tech",
-    "AI",
+    "retirement homes",
+    "medication adherence",
     "smart dispenser",
   ],
 };
@@ -27,8 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+    // The font variable sits on <html> so the @theme --font-sans token can
+    // resolve it at :root.
+    <html lang="en" className={inter.variable}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

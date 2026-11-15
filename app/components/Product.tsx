@@ -1,70 +1,77 @@
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
+
+import countertop from "@/public/nice.png";
 
 const features = [
-  "Right Dose, Right Time, Every Time",
-  "Live & Cumulative Adherence Reports for caregivers & professionals",
-  "Infrared Biometric Verification Prior To Dispense",
-  "Tamper-proof Security Mechanism",
-  "To-Go Containers That Only Unlock At Correct Times",
-  "Scalable to support up to 10 users"
+  {
+    title: "Biometric verification",
+    body: "An infrared scan confirms the patient's identity before any medication is dispensed",
+  },
+  {
+    title: "Tamper-proof",
+    body: "Medication stays secured inside the device until it is scheduled to be taken",
+  },
+  {
+    title: "Locked to-go containers",
+    body: "Portable containers unlock only when the next dose is due",
+  },
+  {
+    title: "Live adherence reports",
+    body: "Family members, caregivers and physicians can see what was taken and when",
+  },
+  {
+    title: "Up to 10 users per device",
+    body: "Each person has their own profile and dosing schedule",
+  },
 ];
 
 export default function Product() {
+  // Less top padding: the hero's fading device image already supplies the gap.
   return (
-    <section id="product" className="pt-12 pb-24 bg-black">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Text side */}
-          <div>
-            <span className="text-[#FF8CB1] text-sm font-semibold uppercase tracking-widest">
-              What We Are Building
-            </span>
-            <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-              Remedy Zero
-            </h2>
-            <p className="mt-5 text-lg text-slate-400 leading-relaxed">
-              Countertop kiosk device. Simply input prescription blisters and set up
-              corresponding user profiles - and Remedy takes care of everything else!
-            </p>
+    <section id="product" className="pb-24 pt-12 sm:pb-32 sm:pt-16">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <h2 className="text-heading text-ink">Remedy Zero</h2>
+          <p className="text-lead mt-5 text-ink-soft">
+            A countertop dispenser for the medications your household already
+            takes. Load your prescription blister packs, create a profile for
+            each person, and Remedy Zero manages the schedule.
+          </p>
+        </div>
 
-            <ul className="mt-8 space-y-3">
-              {features.map((f) => (
-                <li key={f} className="flex items-start gap-3">
-                  <CheckCircle2
-                    size={20}
-                    className="text-[#FF8CB1] mt-0.5 shrink-0"
-                  />
-                  <span className="text-slate-300 text-sm leading-relaxed">
-                    {f}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#contact"
-              className="mt-10 inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-white text-black text-sm font-medium hover:bg-slate-200 hover:-translate-y-0.5 transition-all"
-            >
-              Request Early Access
-            </a>
+        {/* The main feature gets the room. */}
+        <div className="mt-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="overflow-hidden rounded-card border border-line bg-surface">
+            <Image
+              src={countertop}
+              alt="Remedy Zero on a kitchen counter"
+              sizes="(min-width: 1024px) 600px, calc(100vw - 48px)"
+              className="h-auto w-full"
+              placeholder="blur"
+            />
           </div>
-
-          {/* Visual side — real device photos */}
-          <div className="relative flex items-center justify-center mt-8 lg:mt-0">
-            {/* Main lifestyle shot */}
-            <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-white/10">
-              <Image
-                src="/nice.png"
-                alt="Remedy Dispenser on countertop"
-                width={800}
-                height={800}
-                className="w-full h-auto object-cover"
-                priority
-              />
-            </div>
+          <div>
+            <h3 className="text-subheading text-ink">
+              Right dose, right time, every time
+            </h3>
+            <p className="text-lead mt-5 text-ink-soft">
+              Each dose is released only when it is due, preventing missed and
+              doubled doses and taking the guesswork out of daily medication
+              routines
+            </p>
           </div>
         </div>
+
+        <ul className="mt-20 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <li key={feature.title}>
+              <h4 className="font-semibold text-ink">{feature.title}</h4>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                {feature.body}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

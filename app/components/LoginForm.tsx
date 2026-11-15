@@ -19,28 +19,32 @@ export default function LoginForm() {
     <form action={formAction} className="space-y-5">
       {state.error && <FormError message={state.error} />}
 
-      <Field
-        label="Email"
-        name="email"
-        type="email"
-        autoComplete="email"
-        placeholder="you@example.com"
-        defaultValue={state.values?.email}
-        error={state.fieldErrors?.email}
-      />
+      {/* Locks the inputs while the request is in flight. */}
+      <fieldset disabled={pending} className="space-y-5">
+        <Field
+          label="Email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          placeholder="you@example.com"
+          defaultValue={state.values?.email}
+          error={state.fieldErrors?.email}
+        />
 
-      <Field
-        label="Password"
-        name="password"
-        type="password"
-        autoComplete="current-password"
-        placeholder="••••••••"
-        error={state.fieldErrors?.password}
-      />
+        <Field
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+          error={state.fieldErrors?.password}
+        />
 
-      <RememberMe />
+        <RememberMe />
+      </fieldset>
 
-      <SubmitButton pending={pending}>Log in</SubmitButton>
+      <SubmitButton pending={pending} pendingLabel="Logging in…">
+        Log in
+      </SubmitButton>
     </form>
   );
 }

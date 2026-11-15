@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { AuthShell } from "@/app/components/AuthShell";
+import { AuthShell, authFooterLink } from "@/app/components/AuthShell";
 import SignupForm from "@/app/components/SignupForm";
 import { getCurrentUser } from "@/app/lib/dal";
 import { afterLoginUrl } from "@/app/lib/urls";
@@ -19,14 +19,11 @@ export default async function SignupPage() {
   return (
     <AuthShell
       title="Create your account"
-      subtitle="Remedy is invite-only while we pilot. Use the email your invite was sent to."
+      subtitle="Remedy is invite-only during our pilot. Please use the email address your invitation was sent to."
       footer={
         <>
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-[#FF8CB1] font-semibold hover:underline"
-          >
+          <Link href="/login" className={authFooterLink}>
             Log in
           </Link>
         </>

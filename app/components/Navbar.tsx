@@ -1,12 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 import type { PublicUser } from "@/app/lib/users";
+import { buttonClass } from "@/app/components/ui/button";
+import logo from "@/public/rem_logo.png";
 
 const navLinks = [
   { label: "Product", href: "#product" },
+  { label: "Retirement homes", href: "#retirement-homes" },
   { label: "Story", href: "#story" },
   { label: "Team", href: "#team" },
 ];
@@ -20,135 +24,118 @@ export default function Navbar({ user }: { user: PublicUser | null }) {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Only the given name, so a long full name doesn't blow out the navbar.
-  const firstName = user?.name.trim().split(/\s+/)[0] ?? "";
-
-  const primaryButton = `px-5 py-2 rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 ${
-    scrolled
-      ? "bg-slate-900 text-white hover:bg-slate-800"
-      : "bg-white text-black hover:bg-slate-200"
-  }`;
-
-  const ghostLink = `text-sm font-medium transition-colors ${
-    scrolled
-      ? "text-slate-600 hover:text-slate-900"
-      : "text-slate-300 hover:text-white"
-  }`;
+  const closeMenu = () => setMenuOpen(false);
+  const solid = scrolled || menuOpen;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${
+        solid
+          ? "border-line bg-canvas/85 backdrop-blur-md"
+          : "border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
         <a href="#" className="flex items-center">
-          <img src="/rem_logo.png" alt="Remedy" className="h-8 w-auto" />
+          <Image src={logo} alt="Remedy" className="h-8 w-auto" preload />
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop */}
+        <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className={ghostLink}>
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+            >
               {link.label}
             </a>
           ))}
 
           {user ? (
-            <div className="flex items-center gap-4">
-              <span
-                className={`text-sm ${
-                  scrolled ? "text-slate-600" : "text-slate-300"
-                }`}
-              >
-                Welcome back, <span className="font-semibold">{firstName}</span>
-              </span>
-              <a href={DASHBOARD_URL} className={primaryButton}>
-                Dashboard
-              </a>
-            </div>
+            <a href={DASHBOARD_URL} className={buttonClass("secondary")}>
+              Dashboard
+            </a>
           ) : (
-            <div className="flex items-center gap-4">
-              <a href="/login" className={ghostLink}>
+            <div className="flex items-center gap-6">
+              <a href="/login" className={buttonClass("ghost")}>
                 Log in
               </a>
-              <a href="/signup" className={primaryButton}>
+              <a href="/signup" className={buttonClass("secondary")}>
                 Sign up
               </a>
             </div>
           )}
         </div>
 
-        {/* Mobile menu button */}
         <button
-          className={`md:hidden transition-colors ${
-            scrolled
-              ? "text-slate-700 hover:text-slate-900"
-              : "text-white hover:text-slate-300"
-          }`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          className="-mr-2 p-2 text-ink-soft transition-colors hover:text-ink md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile dropdown */}
-      {menuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 pb-4">
-          <div className="flex flex-col gap-3 pt-2">
+      {/* Mobile — always mounted so it can animate open and closed. */}
+      <div
+        id="mobile-menu"
+        inert={!menuOpen}
+        className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out md:hidden ${
+          menuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="flex flex-col gap-1 px-6 pb-6 pt-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors py-1"
+                onClick={closeMenu}
+                className="py-2 text-base font-medium text-ink-soft transition-colors hover:text-ink"
               >
                 {link.label}
               </a>
             ))}
 
-            {user ? (
-              <>
-                <p className="text-sm text-slate-600 py-1">
-                  Welcome back,{" "}
-                  <span className="font-semibold">{firstName}</span>
-                </p>
+            <div className="mt-4 flex flex-col gap-3">
+              {user ? (
                 <a
                   href={DASHBOARD_URL}
-                  onClick={() => setMenuOpen(false)}
-                  className="mt-1 px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium text-center hover:bg-slate-800 transition-colors"
+                  onClick={closeMenu}
+                  className={buttonClass("secondary", "lg")}
                 >
                   Dashboard
                 </a>
-              </>
-            ) : (
-              <>
-                <a
-                  href="/login"
-                  onClick={() => setMenuOpen(false)}
-                  className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors py-1"
-                >
-                  Log in
-                </a>
-                <a
-                  href="/signup"
-                  onClick={() => setMenuOpen(false)}
-                  className="mt-1 px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-medium text-center hover:bg-slate-800 transition-colors"
-                >
-                  Sign up
-                </a>
-              </>
-            )}
+              ) : (
+                <>
+                  <a
+                    href="/signup"
+                    onClick={closeMenu}
+                    className={buttonClass("secondary", "lg")}
+                  >
+                    Sign up
+                  </a>
+                  <a
+                    href="/login"
+                    onClick={closeMenu}
+                    className={buttonClass("ghost", "lg", "self-center")}
+                  >
+                    Log in
+                  </a>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

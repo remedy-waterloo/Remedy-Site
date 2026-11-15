@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { AuthShell } from "@/app/components/AuthShell";
+import { AuthShell, authFooterLink } from "@/app/components/AuthShell";
 import LoginForm from "@/app/components/LoginForm";
 import { getCurrentUser } from "@/app/lib/dal";
 import { afterLoginUrl } from "@/app/lib/urls";
@@ -21,14 +21,11 @@ export default async function LoginPage() {
   return (
     <AuthShell
       title="Welcome back"
-      subtitle="Log in to see your medication dashboard."
+      subtitle="Log in to view your medication dashboard"
       footer={
         <>
           Don&apos;t have an account?{" "}
-          <Link
-            href="/signup"
-            className="text-[#FF8CB1] font-semibold hover:underline"
-          >
+          <Link href="/signup" className={authFooterLink}>
             Sign up
           </Link>
         </>

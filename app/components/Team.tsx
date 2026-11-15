@@ -1,6 +1,11 @@
+import Image, { type StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
 
-function LinkedinIcon({ size = 14 }: { size?: number }) {
+import { arrowLink, linkArrow } from "@/app/components/ui/button";
+import grady from "@/public/grady.jpeg";
+import steven from "@/public/steven.jpg";
+
+function LinkedinIcon({ size = 16 }: { size?: number }) {
   return (
     <svg
       width={size}
@@ -14,95 +19,69 @@ function LinkedinIcon({ size = 14 }: { size?: number }) {
   );
 }
 
-const founders = [
+const founders: {
+  name: string;
+  role: string;
+  image: StaticImageData;
+  linkedin: string;
+}[] = [
   {
     name: "Steven Mu",
     role: "Founder & CEO",
-    initials: "SM",
-    image: "/steven.jpg",
+    image: steven,
     linkedin: "https://www.linkedin.com/in/stevenmu12/",
   },
   {
     name: "Grady Booth",
     role: "Founder & CTO",
-    initials: "GB",
-    image: "/grady.jpeg",
+    image: grady,
     linkedin: "https://www.linkedin.com/in/grady-booth-42b466290/",
   },
 ];
 
 export default function Team() {
   return (
-    <section id="team" className="pt-16 pb-24 bg-black border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-14">
-          <span className="text-[#FF8CB1] text-sm font-semibold uppercase tracking-widest">
-            The Team
-          </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-            Behind Remedy
-          </h2>
-        </div>
+    <section id="team" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 className="text-heading text-center text-ink">Behind Remedy</h2>
 
-        {/* Founders grid */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
+        <ul className="mt-14 flex flex-wrap justify-center gap-4 sm:gap-6">
           {founders.map((founder) => (
-            <div
+            <li
               key={founder.name}
-              className="group flex flex-col items-center text-center w-[calc(50%-0.375rem)] sm:w-56 lg:w-60 p-4 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+              className="flex w-[calc(50%-0.5rem)] flex-col items-center rounded-card border border-line bg-surface p-6 text-center sm:w-60 sm:p-8"
             >
-              {/* Avatar */}
-              <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-white text-base sm:text-xl font-bold overflow-hidden transition-colors duration-300 group-hover:bg-white/15">
-                {founder.image ? (
-                  <img
-                    src={founder.image}
-                    alt={founder.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  founder.initials
-                )}
-              </div>
-
-              <h3 className="mt-4 sm:mt-5 text-sm sm:text-lg font-bold text-white">
+              <Image
+                src={founder.image}
+                alt=""
+                sizes="80px"
+                className="size-16 rounded-full object-cover sm:size-20"
+                placeholder="blur"
+              />
+              <h3 className="mt-5 font-semibold text-ink sm:text-lg">
                 {founder.name}
               </h3>
-              <p className="mt-1 text-xs sm:text-sm text-[#FF8CB1] font-semibold">
-                {founder.role}
-              </p>
+              <p className="mt-1 text-sm text-ink-muted">{founder.role}</p>
               <a
                 href={founder.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-ink"
               >
-                <LinkedinIcon size={14} />
+                <LinkedinIcon />
                 LinkedIn
               </a>
-
-              {/* Decorative line */}
-              <div className="mt-4 w-8 h-0.5 bg-[#FF8CB1] rounded-full group-hover:w-14 transition-all duration-300" />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Join us callout */}
-        <div className="mt-16 text-center">
-          <p className="text-slate-400 text-sm">
-            We&apos;re building a world-class team.
-          </p>
-          <a
-            href="#contact"
-            className="group mt-2 inline-flex items-center gap-1.5 text-[#FF8CB1] font-semibold text-sm"
-          >
-            Get in touch if you&apos;d like to join us
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1"
-            />
+        <p className="mt-14 text-center text-sm text-ink-muted">
+          Interested in joining us?{" "}
+          <a href="#contact" className={arrowLink}>
+            Get in touch
+            <ArrowRight size={16} className={linkArrow} />
           </a>
-        </div>
+        </p>
       </div>
     </section>
   );
