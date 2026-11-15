@@ -59,7 +59,6 @@ export const ADHERENCE_TARGET = 95;
 export const upcomingDoses = [
   {
     patient: "Margaret Chen",
-    room: "104",
     meds: "Metformin 500mg, Lisinopril 10mg",
     time: "5:00 PM",
     device: "RMD-0412",
@@ -67,7 +66,6 @@ export const upcomingDoses = [
   },
   {
     patient: "Harold Okafor",
-    room: "112",
     meds: "Donepezil 10mg",
     time: "5:00 PM",
     device: "RMD-0419",
@@ -75,7 +73,6 @@ export const upcomingDoses = [
   },
   {
     patient: "Doris Lambert",
-    room: "207",
     meds: "Warfarin 5mg",
     time: "5:15 PM",
     device: "RMD-0433",
@@ -83,7 +80,6 @@ export const upcomingDoses = [
   },
   {
     patient: "Walter Singh",
-    room: "211",
     meds: "Amlodipine 5mg, Atorvastatin 20mg",
     time: "5:30 PM",
     device: "RMD-0438",
@@ -91,7 +87,6 @@ export const upcomingDoses = [
   },
   {
     patient: "Evelyn Park",
-    room: "215",
     meds: "Levothyroxine 75mcg",
     time: "6:00 PM",
     device: "RMD-0441",
@@ -108,7 +103,7 @@ export const alerts: {
   {
     status: "critical",
     title: "Device offline",
-    detail: "RMD-0438 · Room 211 hasn't checked in.",
+    detail: "East Wing (RMD-0438) hasn't checked in.",
     time: "9:14 AM",
   },
   {
@@ -120,26 +115,42 @@ export const alerts: {
   {
     status: "warning",
     title: "Low stock",
-    detail: "Warfarin 5mg in RMD-0433 has 2 days left.",
+    detail: "Warfarin 5mg in Nurses' Station has 2 days left.",
     time: "1:02 PM",
   },
   {
     status: "good",
     title: "Refill completed",
-    detail: "RMD-0412 restocked by J. Alvarez.",
+    detail: "Lobby restocked by J. Alvarez.",
     time: "2:45 PM",
   },
 ];
 
 export const devices: {
   id: string;
-  room: string;
+  /** Whatever the user calls this dispenser — set when it's added to a fleet. */
+  name: string;
   status: Status;
   stockDays: number;
 }[] = [
-  { id: "RMD-0412", room: "104", status: "good", stockDays: 21 },
-  { id: "RMD-0419", room: "112", status: "good", stockDays: 14 },
-  { id: "RMD-0433", room: "207", status: "warning", stockDays: 2 },
-  { id: "RMD-0438", room: "211", status: "critical", stockDays: 9 },
-  { id: "RMD-0441", room: "215", status: "good", stockDays: 17 },
+  { id: "RMD-0412", name: "Lobby", status: "good", stockDays: 21 },
+  { id: "RMD-0419", name: "Memory Care", status: "good", stockDays: 14 },
+  { id: "RMD-0433", name: "Nurses' Station", status: "warning", stockDays: 2 },
+  { id: "RMD-0438", name: "East Wing", status: "critical", stockDays: 9 },
+  { id: "RMD-0441", name: "Dining Room", status: "good", stockDays: 17 },
 ];
+
+export type Fleet = { id: string; name: string; deviceIds: string[] };
+
+export const fleets: Fleet[] = [
+  {
+    id: "maplewood",
+    name: fleet.name,
+    deviceIds: devices.map((d) => d.id),
+  },
+  { id: "cedar-house", name: "Cedar House", deviceIds: [] },
+];
+
+export function deviceName(id: string): string {
+  return devices.find((d) => d.id === id)?.name ?? id;
+}

@@ -13,6 +13,7 @@ import { getCurrentUser } from "@/app/lib/dal";
 import {
   ADHERENCE_TARGET,
   alerts,
+  deviceName,
   devices,
   doseWindows,
   fleet,
@@ -153,7 +154,7 @@ export default async function DashboardHome() {
             <ChevronDown size={16} className="text-slate-500" />
           </button>
           <Link
-            href="/dashboard/devices"
+            href="/dashboard/devices/new"
             className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black transition-all hover:-translate-y-0.5 hover:bg-slate-200"
           >
             <Plus size={16} />
@@ -233,13 +234,13 @@ export default async function DashboardHome() {
                 <tbody>
                   {upcomingDoses.map((dose) => (
                     <tr key={dose.patient} className="border-b border-white/5 last:border-0">
-                      <td className="px-6 py-3">
-                        <p className="font-medium">{dose.patient}</p>
-                        <p className="text-xs text-slate-500">Room {dose.room}</p>
-                      </td>
+                      <td className="px-6 py-3 font-medium">{dose.patient}</td>
                       <td className="px-3 py-3 text-slate-300">{dose.meds}</td>
                       <td className="px-3 py-3 text-slate-300">{dose.time}</td>
-                      <td className="px-3 py-3 font-mono text-xs text-slate-400">{dose.device}</td>
+                      <td className="px-3 py-3">
+                        <p className="text-slate-300">{deviceName(dose.device)}</p>
+                        <p className="font-mono text-xs text-slate-500">{dose.device}</p>
+                      </td>
                       <td className="px-6 py-3">
                         <span
                           className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
@@ -302,14 +303,14 @@ export default async function DashboardHome() {
                 return (
                   <li key={device.id}>
                     <div className="flex items-center justify-between gap-2 text-sm">
-                      <div className="flex items-center gap-2">
+                      <div className="flex min-w-0 items-center gap-2">
                         {online ? (
-                          <Wifi size={14} className="text-emerald-400" />
+                          <Wifi size={14} className="shrink-0 text-emerald-400" />
                         ) : (
-                          <WifiOff size={14} className="text-red-400" />
+                          <WifiOff size={14} className="shrink-0 text-red-400" />
                         )}
-                        <span className="font-mono text-xs">{device.id}</span>
-                        <span className="text-xs text-slate-500">· Room {device.room}</span>
+                        <span className="truncate font-medium">{device.name}</span>
+                        <span className="shrink-0 font-mono text-xs text-slate-500">{device.id}</span>
                       </div>
                       <span className={`text-xs ${online ? "text-slate-500" : "text-red-400"}`}>
                         {online ? "Online" : "Offline"}
