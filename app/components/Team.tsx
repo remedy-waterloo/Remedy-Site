@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 import { arrowLink, linkArrow } from "@/app/components/ui/button";
 import grady from "@/public/grady.jpeg";
+import michelle from "@/public/michelle.jpg";
 import steven from "@/public/steven.jpg";
 
 function LinkedinIcon({ size = 16 }: { size?: number }) {
@@ -36,6 +37,12 @@ const founders: {
     role: "Founder & CTO",
     image: grady,
     linkedin: "https://www.linkedin.com/in/grady-booth-42b466290/",
+  },
+  {
+    name: "Michelle Yao",
+    role: "Founding Engineer",
+    image: michelle,
+    linkedin: "https://www.linkedin.com/in/michellejyao/",
   },
 ];
 
